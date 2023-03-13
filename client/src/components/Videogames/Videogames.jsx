@@ -6,7 +6,7 @@ import Videogame from "../VideoGame/Videogame";
 import Pagination from "../Pagination/Pagination";
 import FilteredBy from "../FilterBy/FilterBy";
 import "./videogames.css";
-import { getAllGames, getGenres } from "../../Redux/store/actions/actions";
+import { getAllGames, getGenres } from "../../Redux/actions";
 import Footer from "../Footer/Footer"
 
 export default function Videogames() {

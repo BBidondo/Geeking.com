@@ -1,6 +1,10 @@
+
+
+  
+
 .background {
   display: block;
-  width: 100%;
+
   background-repeat: repeat;
   float: left;
   width: 100%;
@@ -12,9 +16,7 @@
   background-size: 500%;
 }
 
-
-
-.kratos {
+/* .kratos {
   position: absolute;
   width: 55%;
   height: 500;
@@ -27,49 +29,43 @@
   height: 500;
   left: 45%;
   top: 0px;
-}
+} */
 
-.MyImage button {
-  display: flex;
-  padding: 10px;
-  height: 20px;
-  width: 40%;
-}
-
-img {
+/* img {
   display: block;
   width: 79%;
   align-items: center;
   justify-content: center;
 }
 
-
 .MyImage {
   display: flex;
   align-items: center;
   height: 60%;
   width: 288px;
-}
-
-
+} */
 
 .myButton {
+  position: sticky;
+  left: 570px;
+  top: 386px;
+  z-index: 1000;
   display: flex;
-  padding-top: -100px;
   justify-content: center;
   align-items: center;
-  margin-top: 36%;
-  margin-left: 12%;
   background-color: #ffffff;
   border-radius: 10px;
-  width: 30%;
+  width: 23%;
+  flex-wrap: wrap;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow, transform;
   transition-property: box-shadow, transform;
 }
 
-.myButton:hover, .myButton:focus, .myButton:active {
+.myButton:hover,
+.myButton:focus,
+.myButton:active {
   box-shadow: 0 0 20 px rgba(0, 0, 0, 0.5);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
@@ -89,55 +85,75 @@ img {
     transform: scale(1);
   }
 }
+@media only screen and (max-width: 768px) {
+  .myButton {
+    position: sticky;
+  left:  47px;
+  top: 386px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 23%;
+  flex-wrap: wrap;
+  min-width: 300px;
+  }
+
+
+}
 
 .Title {
   position: absolute;
-  width: 633px;
+  width: 333px;
   height: 150px;
-  left: 154px;
-  top: 173px;
+  left: 570px;
+  top: 310px;
+  min-width: 300px;
 
-  font-family:Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 64px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 44px;
   line-height: 5px;
-  letter-spacing: 0.00em;
+  letter-spacing: 0em;
 
   color: #ffffff;
 }
 
-.Title4{
+.Title4 {
   position: absolute;
-  width: 633px;
+  width: 333px;
   height: 150px;
-  left: 444px;
-  top: 173px;
+  left: 768px;
+  top: 310px;
 
   font-family: "Helvetica";
   font-weight: 600;
-  font-size: 64px;
+  font-size: 44px;
   line-height: 5px;
-  letter-spacing: 0.00em;
+  letter-spacing: 0em;
 
-  color: #7600FF;
+  color: #ffffff;
 }
-.Title5{
+.Title5 {
   position: absolute;
   width: 633px;
   height: 150px;
-  left: 654px;
-  top: 173px;
+  left: 570px;
+  top: 310px;
 
   font-family: "Helvetica";
   font-weight: 600;
-  font-size: 64px;
+  font-size: 44px;
   line-height: 5px;
-  letter-spacing: 0.00em;
+  letter-spacing: 0em;
 
   color: #ffffff;
 }
 
-.Title1{
+
+/* .Title1 {
   position: absolute;
   width: 633px;
   height: 10px;
@@ -150,10 +166,10 @@ img {
   line-height: 55px;
   letter-spacing: 0.02em;
 
-  color: #B3ADAE;
+  color: #b3adae;
 }
 
-.Title2{
+.Title2 {
   position: absolute;
   width: 833px;
   height: 10px;
@@ -166,14 +182,14 @@ img {
   line-height: 55px;
   letter-spacing: 0.02em;
 
-  color: #B3ADAE;
+  color: #b3adae;
 }
 
-.fuego{
+.fuego {
   position: absolute;
-  width:10%;
+  width: 10%;
   height: 500;
-  left: 9%;
-  top:320px;
-}
-
+  left: 21.5%;
+  top: 160px;
+} */
+  

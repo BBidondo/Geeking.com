@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogameDetail, clean } from "../../Redux/store/actions/actions";
+import { getVideogameDetail, clean } from "../../Redux/actions";
 import Navbar from "../NavBar/NavBar";
 import photo from "../../img/conecting.gif";
 import { NavLink, useHistory } from "react-router-dom";

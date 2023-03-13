@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
         `https://api.rawg.io/api/games?search=${req.query.name}&key=${APIKEY}`
       );
       if (!response.data.count)
-        return res.status(204).json(`Juego no encontrado "${req.query.name}"`);
+        return res.status(204).json(`Not found "${req.query.name}"`);
       const gamesREADY = response.data.results.map((game) => {
         return {
           id: game.id,
@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
       const results1 = date;
       return res.json(results1);
     } catch (error) {
-      return res.status(400).json("no existe el videogame");
+      return res.status(400).json("Does not exist");
     }
   } else {
     try {

@@ -1,8 +1,9 @@
 require("dotenv").config();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const { Router } = require("express");
-const router = Router();
+const express = require('express');
+const router = express.Router();
+
 const APIKEY = process.env.YOUR_API_KEY;
 
 const videogames = require("./videogames.js");

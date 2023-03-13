@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { orderBy, filterBy } from "../../Redux/store/actions/actions";
+import { orderBy, filterBy } from "../../Redux/actions";
 import "./FilterBy.css";
 
 function FilteredBy({ orderBy, genres, filterBy }) {
@@ -15,18 +15,16 @@ function FilteredBy({ orderBy, genres, filterBy }) {
     <div className="container-div">
       <select className="selectCont" onChange={handleSelect} name="" id="">
         <option className="option" value="default">
-          ALL
+          All Genres
         </option>
-        <optgroup className="optionGroup" label="DataBase">
+        
           <option className="option" value="DB">
-            CREATED
+            Created
           </option>
-        </optgroup>
-        <optgroup className="optionGroup" label="API">
-          <option className="option" value="API">
-            API
-          </option>
-        </optgroup>
+       
+        
+        
+       
         <optgroup className="optionGroup" label="GENRES">
           {genres &&
             genres.map((g) => (
@@ -38,14 +36,14 @@ function FilteredBy({ orderBy, genres, filterBy }) {
       </select>
       <select className="selectCont" onChange={handleSelect2} name="" id="">
         <option className="option" value="default">
-          ORDER
+          Order
         </option>
         <optgroup className="optionGroup" label="Rating">
           <option className="option" value="asc">
-            DESCENDENT
+            Desendent
           </option>
           <option className="option" value="desc">
-            ASCENDENT
+            Ascendent
           </option>
         </optgroup>
         <optgroup className="optionGroup" label="Alphabetic">

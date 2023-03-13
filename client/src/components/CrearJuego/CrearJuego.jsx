@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import axios from "axios";
 import "./CrearJuego.css";
-import { getAllGames } from "../../Redux/store/actions/actions";
+import { getAllGames } from "../../Redux/actions";
+import Footer from "../Footer/Footer";
 
 function CrearJuego(props) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
-    form: "Debe completar el formulario!",
+    form: "Must to be completed!",
   });
 
   const [form, setForm] = useState({
@@ -20,7 +21,9 @@ function CrearJuego(props) {
     platforms: [],
   });
 
-  const handleChange = (e) => {
+  const [image, setImage] = useState(null);
+
+  const handleSelect = (e) => {
     if (e.target.parentNode.parentNode.id === "genres") {
       if (e.target.checked) {
         setForm((prevState) => ({
@@ -47,7 +50,9 @@ function CrearJuego(props) {
         }));
       }
     }
-    if (e.target.type !== "checkbox") {
+    if (e.target.type === "file") {
+      setImage(e.target.files[0]);
+    } else if (e.target.type !== "checkbox") {
       setForm((prevState) => ({
         ...prevState,
         [e.target.name]: e.target.value,
@@ -60,6 +65,7 @@ function CrearJuego(props) {
       })
     );
   };
+
   const validate = (form) => {
     let errors = {};
     if (!form.name) {
@@ -72,11 +78,11 @@ function CrearJuego(props) {
     } else if (form.description.length < 8) {
       errors.description = "Description must have at least 8 characters";
     }
-    if (!form.rating) {
-      errors.rating = "Rating is required";
-    } else if (!/^[1-5]$/.test(form.rating)) {
-      errors.rating = "Rating must be between 1 and 5";
-    }
+    // if (!form.rating) {
+    //   errors.rating = "Rating is required";
+    // } else if (!/^[1-5]$/.test(form.rating)) {
+    //   errors.rating = "Rating must be between 1 and 5";
+    // }
     return errors;
   };
 
@@ -94,7 +100,7 @@ function CrearJuego(props) {
     axios
       .post("http://localhost:3001/videogame", form)
       .then((res) => console.log(res.data));
-    alert(`${form.name} Creado Correctamente`);
+    alert(`${form.name} successfully created`);
 
     dispatch(getAllGames());
     props.history.push("/videogames");
@@ -109,9 +115,9 @@ function CrearJuego(props) {
           <div className="container-add">
             <h2>Create your game</h2>
             <div className="div-cont">
-              <form onSubmit={handleSubmit} onChange={handleChange}>
+              <form onSubmit={handleSubmit} onChange={handleSelect}>
                 <label htmlFor="name" className="title-name">
-                  <strong>Name: </strong>
+                  <strong>Name </strong>
                 </label>
                 <br />
                 <input
@@ -124,7 +130,7 @@ function CrearJuego(props) {
                 />
                 <br />
                 <label htmlFor="description" className="title-name">
-                  <strong>Description: </strong>
+                  <strong>Description </strong>
                 </label>
                 <br />
                 <textarea
@@ -137,7 +143,7 @@ function CrearJuego(props) {
                 />
                 <br />
                 <label htmlFor="date" className="title-name">
-                  <strong>Release Date: </strong>
+                  <strong>Release Date </strong>
                 </label>
                 <br />
                 <input
@@ -148,8 +154,10 @@ function CrearJuego(props) {
                   required
                 />
                 <br />
+                <br />
+                {/* <br />
                 <label htmlFor="rating" className="title-name">
-                  <strong>Rating: </strong>
+                  <strong>Rating </strong>
                 </label>
                 <br />
                 <input
@@ -161,9 +169,9 @@ function CrearJuego(props) {
                   maxLength="1"
                   autoComplete="off"
                 />
-                <br />
+                <br /> */}
                 <label className="title-name">
-                  <strong>Genres:</strong>
+                  <strong>Genres</strong>
                 </label>
                 <div id="genres" className="genres-div">
                   <div className="Action">
@@ -173,11 +181,11 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Action"
                     />
-                    <label htmlFor="Action">Action.</label>
+                    <label htmlFor="Action">Action</label>
                   </div>
                   <div className="indie">
                     <input name="Indie" value="1" type="checkbox" id="Indie" />
-                    <label htmlFor="Indie">Indie.</label>
+                    <label htmlFor="Indie">Indie</label>
                   </div>
                   <div className="Adventure">
                     <input
@@ -186,11 +194,11 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Adventure"
                     />
-                    <label htmlFor="Adventure">Adventure.</label>
+                    <label htmlFor="Adventure">Adventure</label>
                   </div>
                   <div>
                     <input name="RPG" value="4" type="checkbox" id="RPG" />
-                    <label htmlFor="RPG">RPG.</label>
+                    <label htmlFor="RPG">RPG</label>
                   </div>
                   <div>
                     <input
@@ -199,7 +207,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Strategy"
                     />
-                    <label htmlFor="Strategy">Strategy.</label>
+                    <label htmlFor="Strategy">Strategy</label>
                   </div>
                   <div>
                     <input
@@ -208,7 +216,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Shooter"
                     />
-                    <label htmlFor="Shooter">Shooter.</label>
+                    <label htmlFor="Shooter">Shooter</label>
                   </div>
                   <div>
                     <input
@@ -217,7 +225,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Casual"
                     />
-                    <label htmlFor="Casual">Casual.</label>
+                    <label htmlFor="Casual">Casual</label>
                   </div>
                   <div>
                     <input
@@ -226,7 +234,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Simulation"
                     />
-                    <label htmlFor="Simulation">Simulation.</label>
+                    <label htmlFor="Simulation">Simulation</label>
                   </div>
                   <div>
                     <input
@@ -235,7 +243,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Puzzle"
                     />
-                    <label htmlFor="Puzzle">Puzzle.</label>
+                    <label htmlFor="Puzzle">Puzzle</label>
                   </div>
                   <div>
                     <input
@@ -244,7 +252,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Arcade"
                     />
-                    <label htmlFor="Arcade">Arcade.</label>
+                    <label htmlFor="Arcade">Arcade</label>
                   </div>
                   <div>
                     <input
@@ -253,7 +261,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Platformer"
                     />
-                    <label htmlFor="Platformer">Platformer.</label>
+                    <label htmlFor="Platformer">Platformer</label>
                   </div>
                   <div>
                     <input
@@ -262,7 +270,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Racing"
                     />
-                    <label htmlFor="Racing">Racing.</label>
+                    <label htmlFor="Racing">Racing</label>
                   </div>
                   <div>
                     <input
@@ -271,9 +279,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Massively-Multiplayer"
                     />
-                    <label htmlFor="Massively-Multiplayer">
-                      Massively-Multiplayer.
-                    </label>
+                    <label htmlFor="Multiplayer">Multiplayer</label>
                   </div>
                   <div>
                     <input
@@ -282,7 +288,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Sports"
                     />
-                    <label htmlFor="Sports">Sports.</label>
+                    <label htmlFor="Sports">Sports</label>
                   </div>
                   <div>
                     <input
@@ -291,28 +297,28 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="Fighting"
                     />
-                    <label htmlFor="Fighting">Fighting.</label>
+                    <label htmlFor="Fighting">Fighting</label>
                   </div>
                 </div>
                 <label className="title-name">
-                  <strong>Platforms: </strong>{" "}
+                  <strong>Platforms </strong>{" "}
                 </label>
                 <div id="platforms" className="plat-div">
                   <div>
                     <input name="PC" type="checkbox" id="PC" />
-                    <label htmlFor="PC">PC.</label>
+                    <label htmlFor="PC">PC</label>
                   </div>
                   <div>
                     <input name="iOS" type="checkbox" id="iOS" />
-                    <label htmlFor="iOS">iOS.</label>
+                    <label htmlFor="iOS">iOS</label>
                   </div>
                   <div>
                     <input name="Android" type="checkbox" id="Android" />
-                    <label htmlFor="Android">Android.</label>
+                    <label htmlFor="Android">Android</label>
                   </div>
                   <div>
                     <input name="macOS" type="checkbox" id="macOS" />
-                    <label htmlFor="macOS">macOS.</label>
+                    <label htmlFor="macOS">macOS</label>
                   </div>
                   <div>
                     <input
@@ -320,7 +326,7 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="PlayStation 4"
                     />
-                    <label htmlFor="PlayStation 4">PlayStation 4.</label>
+                    <label htmlFor="PlayStation 4">PlayStation 4</label>
                   </div>
                   <div>
                     <input
@@ -328,21 +334,27 @@ function CrearJuego(props) {
                       type="checkbox"
                       id="PlayStation 5"
                     />
-                    <label htmlFor="PlayStation 5">PlayStation 5.</label>
+                    <label htmlFor="PlayStation 5">PlayStation 5</label>
                   </div>
                   <div>
                     <input name="XBOX" type="checkbox" id="XBOX" />
-                    <label htmlFor="XBOX">XBOX.</label>
+                    <label htmlFor="XBOX">XBOX</label>
                   </div>
                   <div>
                     <input name="PS Vita" type="checkbox" id="PS Vita" />
-                    <label htmlFor="PS Vita">PS Vita.</label>
+                    <label htmlFor="PS Vita">PS Vita</label>
                   </div>
                 </div>
+
+                <label htmlFor="image" className="title-image">
+                  <strong id="Image">Image </strong>
+                </label>
                 <br />
-                <div className="div-but-form">
-                  <button type="submit">Create</button>
-                </div>
+                <input name="image" className="dt" type="file" id="image" />
+                <br />
+                <button className="submit" type="submit">
+                  Create
+                </button>
               </form>
             </div>
           </div>

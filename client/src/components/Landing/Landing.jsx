@@ -15,16 +15,15 @@ export default function Landing() {
       <Link to="/videogames">
         <img className="myButton" src={image} alt="" />
       </Link>
-      <img className="fuego" src={fuego} />
-      <div className="wrapper">
+      {/* <img className="fuego" src={fuego} /> */}
+      {/* <div className="wrapper">
         <div  className="Back image"><img className="kratos2" src={kratos2} /> </div>
         <div className="Front image"><img className="kratos" src={kratos} /> </div>
-      </div>
+      </div> */}
       <h3 className="Title">Welcome,</h3>
       <h3 className="Title4">Gamer</h3>
-      <h3 className="Title5">!</h3>
-      <h4 className="Title1">+ 10000 games</h4>
-      <h4 className="Title2">All the platforms</h4>
+      <h3 className="Title5"></h3>
+      
     </div>
   );
 }
